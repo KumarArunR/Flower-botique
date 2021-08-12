@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static 'shop/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div id="brand">
+                <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'show' %}">return to Home</a></li>
+                    <li  class="current"><a href=''>confirm order</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <form action="{% url 'delivery' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" value={{orderno}} name="orderno" hidden>
+        <div class="grid-container">
+            
+        {% for i in list %}
+       <div class='grid-item'><img src ="/static/shop/{{i.picture}}" width="200" height="300"></div>
+        
+       <div class="grid-item">  
+       {% for j,k in i.items %}
+         {% ifequal j "picture" %}
+            
+         
+         {% else %} <div id="textbox">{{j}}:{{k}} </div>   {% endifequal %}
+            {% endfor %}
+      
+           you want to remove this item
+            
+            <input type="checkbox" name="{{i.product}}" value="yes" >
+            <hr></div>
+    {% endfor %}</div>
+    <div id="textbox"><centre>ORDER CONFIRMATION:</centre></div>
+    <div id="textbox" style="background-color: burlywood;width:220px;float:right;">TOTAL COST:{{totalcost}}₹</div>
+    <div id="textbox">ORDERNO:{{orderno}}   <p>enter phonenumber:<br> <input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone" style="padding-left:20px" ;" required></p></div>
+
+     <p style="padding-top:30px;">  <input type="submit" value='confirmorder' style="width:220px;background-color:rgb(212, 120, 0);padding: 10px;border-color:rgb(212, 120, 0) ;"> </p>
+
+<p style="color:red">note:if you removed any of these item the total cost may vary,on submit it will be reflected</p>
+    </form>
+</body>
+</html> 

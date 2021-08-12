@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'shop/navbar.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+
+   
+
+    
+    
+</head>
+
+<body>
+  <header>
+    <div class="wrapper">
+        <div id="brand">
+            <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+        </div>
+        <nav>
+            <ul>
+                <li >  <form action="{% url 'show' %}" method="POSt">  {% csrf_token %} 
+
+                  <input type="text" name="item"><input type="submit" value="search" name="search">
+                </form>
+                <form action="{% url 'show' %}" method="POST">
+  {% csrf_token %} 
+ 
+  <select name="season" style="float:right;padding:5px;background-color: rgb(179, 111, 23);border-radius:5px;">
+  <option selected value="all">showall</option>
+  <option  value="season">seasonal</option>
+</select>
+<select name="pmodel" style="float:right;padding:5px;background-color: rgb(179, 111, 23);border-radius:5px;">
+  <option selected value="all">showall</option>
+  <option value="made">readyone</option>
+<option value="custommade">custom</option></select>
+<input type="submit" value="applyfilter" name="filters" style="border-radius:5px;float:right"; class="button">
+</form>
+<br></li>
+            </ul>
+        </nav>
+    </div>
+</header> 
+
+<br>
+
+  
+    <div class="grid-container1"  style="width:display;height:500px;background-color:blanchedalmond;border:2px saddlebrown;">
+    <div class="grid-container1" id="homebg" style="width:200px;height:480px;"></div>
+    <div class="grid-container1" id="homebg2" style="width:200px;height:480px;"></div>
+    <div class="grid-container1" id="homebg3" style="width:200px;height:480px;"></div>
+    <div class="grid-container1" id="homebg4" style="width:200px;height:480px;"></div>
+    <div class="grid-container1" id="homebg5" style="width:200px;height:480px;"></div>
+    <div class="grid-container1" id="homebg6" style="width:200px;height:480px;"></div></div>
+<br>
+
+  
+ 
+ 
+ <div id="mySidenav" class="sidenav">
+  <a href="{% url 'logout' %}" id="about">logout  <i class="fa fa-lock" style="float:right;"> </i></a>
+  <a href="{% url 'showorder' %}" id="blog">myorders <i class="fa fa-shopping-bag button" style="float:right;" ></i> </a>
+  <a href="{% url 'cart' %}" id="projects">showcart<i class="fa fa-shopping-cart" style="float:right;"></i></a>
+  <a href="#" id="contact">welcome <br><b>{{user}}<i class="fa fa-user" style="float:right" ></i></b></a>
+</div>
+<form action="{% url 'show' %}" method="POST">
+  {% csrf_token %} 
+ <script>alert('{{msg}}');</script> 
+  
+ <p style="padding-top:10px;"> <div class="grid-container">
+{% for i in detail %}
+
+<div class="grid-item"> <p >
+    
+    <img src="/static/shop/{{i.img}}" alt="Snow" style="width:200px;height:200px;padding-bottom:10px;"><br>
+     {% ifequal i.stockavailable "yes" %}
+     {% for k in month %}
+     {% ifequal i.season k %}
+     
+       <input type ="submit" value = "Add to Cart"  name={{i.img}} style="padding:5px;width:200px;" class="button"></img>
+       <br><button type=text disabled style="background-color:greenyellow;border-color:greenyellow;border-radius:30%;">₹cost:{{i.cost}}</button>
+        <p style="float:right;color:red">itemavailable:{{i.itemavail}}</p>
+       
+         
+       
+       {% endifequal %}
+       {% endfor %}
+       {% else %}
+        <b>not in stock</b>
+
+      
+    {% endifequal %}
+     
+    
+    </select>
+   </p></div>
+    {% endfor %}
+    </div></p>
+
+  </form>
+    
+    
+ </body>
+</html>
+  
+  
+
+            

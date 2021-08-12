@@ -1,0 +1,10 @@
+asgiref==3.2.5
+cassandra-driver==3.22.0
+click==7.1.1
+Django==3.0.4
+django-cassandra-engine==1.6.1
+geomet==0.1.2
+Pillow==7.0.0
+pytz==2019.3
+six==1.14.0
+sqlparse==0.3.1

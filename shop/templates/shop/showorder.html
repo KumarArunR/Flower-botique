@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'shop/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div id="brand">
+                <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'show' %}">return to Home</a></li>
+                    <li  class="current"><a href=''>showorders</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <form action="" method="POST">
+        {% csrf_token %}
+
+
+       <p><input type="submit" value="delivered" class="submit" name="apply">
+        <input type="submit" value="cancelledorder" class="submit" name="apply">
+        <input type="submit" value="tobedelivered" class="submit" name="apply"><br></p> 
+        <br></p> 
+        
+    </form>
+
+
+    <div class="grid-container" style="border-radius:10px;border-color: teal;background-color:whitesmoke;">
+    <form action="{% url 'showorder' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" value={{user}} name="user" readonly hidden>
+    {% for i in detail %}
+
+      <b>ORDER NO:{{i.orderno}}</b><br>
+      <b>ORDEREDON:{{i.date}}</b><br>
+    {% for k in i.img %}
+       <img src="/static/shop/{{k}}" alt="Snow" style="width:100px;height:100px;">
+       {% endfor%}
+    <p> {% for j  in i.productdetails %}
+    
+        
+          {{j}}<br>
+          
+          {% endfor %}<br>
+         TOTALCOST: {{i.totalcost}}
+         {% ifequal i.status 'cancelled' %}
+         <b style="float:right"> order cancelled</b>
+         {% else %}
+              {% ifequal i.status 'tobedelivered' %}
+         <input type ="SUBMIT" name={{i.orderno}} value="cancelorder" style="background-color: red;color: white;float:right;"><br>
+              {% else %}
+              <b style="float:right">              {{i.status}}
+            </b>
+          {% endifequal %}
+             {% endifequal %}
+            
+        </p><hr>
+{% endfor %}  </div>    
+    </form>
+</body>
+</html>

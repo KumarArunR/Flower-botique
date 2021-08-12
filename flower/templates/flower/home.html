@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+</head>
+<body>
+	<script>
+		alert('{{msg}}');
+	</script>
+
+    	<header>
+        	<div class="wrapper">
+            	<div id="brand">
+					<h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE
+					</h1>
+            	</div>
+            	<nav>
+                	<ul>
+                    	<li class="current"><a href="{% url 'home' %}">Home</a></li>
+                    	<li><a href="{% url 'about' %}">About</a></li>
+						<li><a href="{% url 'contact' %}">Contact</a></li>
+						<li><a href="{% url 'admin' %}">admin</a></li>
+                	</ul>
+            	</nav>
+        	</div>
+		</header>
+	
+	<div class="form-container">
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" onclick="login()">Login</button>
+				<button type="button" class="toggle-btn" onclick="register()">Register</button>
+			</div>
+			<div class="social-icons">
+				<i class="fa fa-google"></i>
+        		<i class="fa fa-twitter"></i>
+        		<i class="fa fa-facebook"></i>
+			</div>
+			<form action="{% url 'login' %}" method="POST" id="login" class="input-group">
+				{% csrf_token %}
+				<div class="textbox">
+					<i class="fa fa-user"></i>
+					<input type="text"placeholder="username" name="uname" required>
+				</div>
+				<div class="textbox">
+					<i class="fa fa-lock"></i>
+					<input type="password" placeholder="Password" name="pass" required>
+				</div>
+				<a href="#" class="forgot"><span>Forgot your Password?</span></a>
+				<button type="submit" class="submit-btn">Sign in</button>
+			</form>
+			<form action="{% url 'signin' %}" method="POST" id="register" class="input-group">
+				{% csrf_token %}
+				<input type="text" class="input-field" placeholder="Name" name='uname' value='{{uname}}'required>
+				<input type="text" class="input-field" placeholder="Email" name='email' value='{{email}}' required>
+				<input type="password" class="input-field" placeholder="Password" name='pass'required>
+				<input type="password" class="input-field" placeholder="Confirm Password" name='cpass' required>
+				<input type="submit" class="submit-btn" value=register>
+			</form>
+		</div>
+		<p>
+			“Flowers always make people better, happier and more helpful; they are sunshine, food and medicine for the soul.” <br> – Luther Burbank
+			
+		</p>
+	</div>
+	<script>
+		var x = document.getElementById("login");
+		var y = document.getElementById("register");
+		var z = document.getElementById("btn");
+		
+		function register()
+		{
+			x.style.left = "-400px";
+			y.style.left = "50px";
+			z.style.left = "110px";
+		}
+
+		function login()
+		{
+			x.style.left = "50px";
+			y.style.left = "450px";
+			z.style.left = "0px";
+		}
+	</script>
+    <footer>
+        <p>The Bloom room Boutique, Copyright <big>&copy;</big> 2020</p>
+    </footer>
+</body>
+</html>

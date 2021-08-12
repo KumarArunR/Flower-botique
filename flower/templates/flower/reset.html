@@ -1,0 +1,19 @@
+<html>
+    <head>
+
+    </head>
+    <body>{{page}}
+        <br>
+        <form method = "POST" action={% url 'reset' %}>
+            {% csrf_token %} 
+            <input type ="text" name ="uname" placeholder=" enter name"  value="{{uname}}"  required/><br>
+        
+            <input type ="password" name="pass" placeholder ="ENTER UR PASSWORD" required/><BR>
+            <input type ="password" name="cpass" placeholder ="confirm password" required/><BR>
+            <input type="email" name="email" placeholder="enter mail id" required/>
+            <input type ="submit" value="register">
+
+        </form>
+        {{msg}}
+    </body>
+</html>

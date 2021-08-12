@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+
+</head>
+<body>
+  <header>
+    <div class="wrapper">
+        <div id="brand">
+    <h1><span class="highlight">ARSAN'S</span> BOUTIQUE
+    </h1>
+        </div>
+        <nav>
+            <ul>
+                <li class="current"><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'admin' %}">admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+    <form action={% url 'admin' %} method="POST" id="myform">
+      <h1>ADMIN</h1>
+      {% csrf_token %}
+      <input type="text" name="name" placeholder="enter name"><br>
+      <input type="password" name="pass" placeholder="enter password">
+      <input type="submit" value="submit" class="submit" onclick="submit()">
+        {{msg}}
+    </form>
+    <script>
+      function submit(){
+        document.getElementById("myform").reset();
+      }
+    </script>
+</body>
+</html>

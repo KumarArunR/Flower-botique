@@ -1,0 +1,129 @@
+#textbox{
+  width:auto;
+  border-radius: 5px 5px 5px 5px;
+  border:1px solid black;
+  padding: 10px;
+  background-color: rgb(99, 199, 0);
+}
+#mySidenav a {
+    position: absolute;
+    left: -88px;
+    transition: 0.3s;
+    padding: 15px;
+    width: 110px;
+    position: fixed;
+    text-decoration: none;
+    font-size: 20oxpx;
+    color: white;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #mySidenav a:hover {
+    left: 0;
+  }
+  
+  #about {
+    top: 20px;
+    background-color: #4CAF50;
+  }
+  
+  #blog {
+    top: 80px;
+    background-color: #2196F3;
+  }
+  
+  #projects {
+    top: 140px;
+    background-color: #f44336;
+  }
+  
+  #contact {
+    top: 200px;
+    background-color: #555
+  }
+  .button{color:white;
+    background-color:rgb(10, 10, 151);
+    border-color:rgb(10, 10, 151) ;
+    
+    border-radius: 20%;}
+
+  .button:hover{
+    background-color:green;
+    border-color: green;
+  }
+    .grid-container {
+      display: grid;
+      
+      grid-column-gap: 10px;
+      grid-row-gap:5px;
+      grid-template-columns: auto auto auto auto;
+      background-color:white;
+      padding: 10px;
+     
+    }
+    
+    .grid-item {
+      background-color: whitesmoke;
+      border: 1px;
+      padding: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+    body{
+      padding-left:20px;
+    }
+  #homebg{
+    background-image:url(home.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #homebg2{
+    background-image:url(home2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #homebg3{
+    background-image:url(home3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #homebg4{
+    background-image:url(home4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #homebg5{
+    background-image:url(home5.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  #homebg6{
+    background-image:url(home6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  .grid-container1 {
+    display: grid;
+    border-radius: 5%;
+    grid-column-gap: 10px;
+    grid-row-gap:5px;
+    grid-template-columns: auto auto auto auto auto auto;
+    background-size: contain;
+    padding: 10px;
+  }
+  td{
+    border:1px solid rgb(48, 14, 10);
+  }
+  .submit{
+    background-color:goldenrod;
+    border-radius: 5px;
+    border-color: goldenrod;
+  }
+  .textbox1{
+    width:200px;
+    border-radius: 5px;
+}
+.submit:hover{
+  width:100px;
+  border-color:gold;
+}

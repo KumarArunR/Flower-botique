@@ -1,0 +1,71 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="{% static 'shop/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body style="background-color: beige;">
+    <header>
+        <div class="wrapper">
+            <div id="brand">
+                <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'show' %}">return to Home</a></li>
+                    <li  class="current"><a href=''>cart</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+   <p style="text-align:center;">{{msg}}</p>
+    
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="{% url 'showorder' %}" id="blog">myorders <i class="fa fa-shopping-bag"style="float:right" ></i> </a>
+        <a href="{% url 'cart' %}" id="projects">showcart<i class="fa fa-shopping-cart"style="float:right" ></i></a>
+        <a href="{% url 'show' %}" id="contact">home <br><i class="fa fa-home" style="float:right" ></i></b></a>
+      </div>
+      
+    <form action={% url 'show1' %} method="POST">
+        {% csrf_token %}
+        <div class="grid-container">
+    {% for i in cart %}
+     
+    <div class='grid-item'>   <img src="/static/shop/{{i.img}}" alt="Snow" height="250px" width="250px">
+               <select name={{i.img}} onchange="{{i.pname}}(value,{{i.cost}});">
+               <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option></select>
+               <div><button type=text disabled style="background-color:greenyellow;border-color:greenyellow;border-radius:30%;">price:₹ <i id="{{i.pname}}">0</i></button></div>
+                <script> 
+        
+                    function {{i.pname}}(v,a){
+                            var cos=parseInt(v)*parseInt(a)
+                            document.getElementById("{{i.pname}}").innerHTML = cos;
+                        }
+                    </script></div>
+        
+       
+        {% endfor %}</div>
+        <div style="padding-top:10px;padding-right: 30px;"><input type ="submit" value="order" class="button" style="padding:10px;background-color:orange;float:right;width:100px;border-radius:5px;"></div>
+    </form>
+    <script> 
+        
+        function cost(v,a){
+                var cos=parseInt(v)*parseInt(a)
+                document.getElementById(c).innerHTML = cos;
+            }
+        </script>
+    
+</body>
+
+</html>

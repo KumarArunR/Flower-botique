@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | About</title>
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="wrapper">
+            <div id="brand">
+                <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li class="current"><a href="{% url 'about' %}" name="about">About</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <div class="container">
+        <article id="content">
+            <h2>Online Florist</h2>
+            <div class="main-content">
+                <p>
+                    Arsan flower boutique is an online flower store that delivers flowers all over India. We at ArsanFlowers deliver the best quality - fresh cut flowers in more than 229+ cities across India with the help of our strong affiliate network and channel stores. Each and every one of our flowers is handpicked at the right stage of bloom by our expert florists in your cities.
+                </p>
+                <p>
+                    Our online flower delivery platform comprises of a team with strong technological and operations experience which enables us to deliver fresh flowers and gifts at the cheapest prices available in India. In addition to delivering flowers, we also strive to make that special occasion for you and your loved ones even more special by delivering surprise gifts like cakes, chocolates, teddy bears and sweets.
+                </p>
+                <p>
+                    Arsan's boutique is always there where ‘Words are not Enough..’. We at Arsan'sBoutique know how important it is to express your feelings with the same amount of zeal that your presence would have brought to the occasion. Bringing a smile on your face and being your messenger with perfection is our motto. We define our success by our satisfied customers.
+                </p>
+            </div>
+        </article>
+        <aside id="sidebar">
+            <div class="dark">
+                <h4>FOUNDED</h4>
+                <p>September 13, 2019 <br> in Chennai, TN</p>
+                <hr>
+                <h4>FOUNDERS</h4>
+                <p>Aravinth Raj<br>Arun Kumar<br>Anbarsan P</p>
+            </div>
+        </aside>
+    </div>
+    <div id="share">
+        <h3>Spread your Love</h3>
+        <span><a href="https://www.facebook.com/"><img class="round" src="/images/fb.png" width="50px"></a></span>
+        <span><a href="https://twitter.com/"><img class="round" src="/images/twitter.png" width="50px"></a></span>
+        <span><a href="https://www.instagram.com/"><img class="round" src="/images/insta.webp" width="50px"></a></span>
+    </div>
+    <footer>
+        <p>Arsan's Boutique, Copyright <big>&copy;</big> 2020</p>
+    </footer>
+</body>
+</html>

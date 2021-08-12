@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome | Contact </title>
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+</head>
+<body >
+    <header>
+        <div class="wrapper">
+            <div id="brand">
+                <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li  class="current"><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header> 
+    <div id="help">
+        <div class="dark">
+            <h4>Phone</h4>
+            <p>040-9864352, 040-65434427, 8763451234</p> <hr>
+            <h4>Email</h4>
+            <p>arsanboutique@gmail.com</p> <hr>
+            <h4>Address</h4>
+            <p>Number 4, 1st Floor, Anna Garden,Velacheri, <br> Chennai, TN - 600042</p>
+        </div>
+    </div>
+    <footer>
+        <p>Arsan's Boutique, Copyright <big>&copy;</big> 2020</p>
+    </footer>

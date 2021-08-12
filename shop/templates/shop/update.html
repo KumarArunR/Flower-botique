@@ -1,0 +1,301 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'shop/navbar.css' %}" rel="stylesheet">
+    <link href="{% static 'flower/style1.css' %}" rel="stylesheet">
+
+
+    <title>Document</title>
+</head>
+<body><header>
+    <div class="wrapper">
+        <div id="brand">
+            <h1><span class="highlight">THE BLOOM ROOM</span> BOUTIQUE</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'logout' %}">logout</a></li>
+                <li  class="current"><a href='#'>adminoperation</a></li>
+            </ul>
+        </nav>
+    </div>
+</header> 
+
+    
+    <p style="color:red">{{msg}}</p>
+   
+    </div>
+
+
+    <div class="grid-container" style="grid-template-columns:auto auto">
+   <div class="grid-item"> <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <b>ADD NEW STOCK</b><br>
+        <input type="text" placeholder="product name" name="pname" class="textbox1" required/><br>
+        <input type="file"  name="img" accept="image/*" class="textbox1"required>
+        <br>
+        <input type="text" placeholder="cost" name="cost" class="textbox1" required/>
+        <br>
+        <select name='season' class="textbox1" required>
+            <option value=''>--Select Month--</option>
+            <option  selected value='all'>all</option>
+            <option value='January'>January</option>
+            <option value='February'>February</option>
+            <option value='March'>March</option>
+            <option value='April'>April</option>
+            <option value='May'>May</option>
+            <option value='June'>June</option>
+            <option value='July'>July</option>
+            <option value='August'>August</option>
+            <option value='September'>September</option>
+            <option value='October'>October</option>
+            <option value='November'>November</option>
+            <option value='December'>December</option>
+            </select> <br>
+            <select name="stock" class="textbox1 ">
+                <option  value="yes">instock</option>
+                <option value="no">not in stock</option>
+            </select><br>
+            <select name="pmodel" class="textbox1 " required>
+                    <option  value="made">readyone</option>
+                <option  value="custommade">custom</option>
+            </select><br>
+        <input type="submit" value="insert" class="submit" name="update"/>
+        <br></div>
+    </form>
+    <div class="grid-item">
+        <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+        <input type="text" name="cname" class="textbox1" placeholder="customername" required>
+        <input type="submit" value="shop" class="button" name="update">
+       </form><br>
+       <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="submit" value="todaysbusiness" class="submit" style="background-color:green;" name="update"/>
+        <input type="submit" value="totalbusiness" class="submit" style="background-color:green;" name="update"/>
+        <input type="submit" value="tobedelivered" class="submit" style="background-color:green;" name="update"/>
+
+        <br>
+        {{today}}
+    </form>
+
+
+        
+</div> 
+
+    </div>
+    <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        
+
+   <div class="grid-container" style="grid-template-columns:auto auto"> 
+    <div class="grid-item">
+        <b>cost update</b><br>
+        <input type="text" placeholder="product name" name="pname" required/><br>
+
+        <input type="text" placeholder="cost" name="cost" required/><br>
+        <input type="submit" value="costupdate" class="submit " name="update"/>
+
+
+        <br>
+    </div></form>
+    <div class="grid-item">
+    <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <b>find product</b><br>
+
+        <input type="text" placeholder="product name" name="pname" required/>
+        <input type="submit" value="finditem" class="submit" name="update"/>
+        <input type="submit" value="deleteitem" class="submit" style="background-color:red;" name="update"/>
+
+        <br></form>
+
+       
+        
+
+    </div></div>
+   <div class="grid-container" style="grid-template-columns:auto auto">
+    <div class="grid-item">
+
+    <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+        <b>find purchase details</b><br>
+
+        <input type="number" name="orderno" placeholder="enterorderno" required>
+        <input type="submit" name="update" class="submit" value="findbyorder" >
+        <input type="submit" value="cancelorder" class="submit" style="background-color:red;" name="update"/>
+        <input type="submit" value="delivered" class="submit" style="background-color:green;" name="update"/>
+    </form>
+        <br>
+        <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+    
+        <input type="text" name="cname" placeholder="entercustomername"  required>
+        <input type="submit" name="update" class="submit " value="findbycustomer">
+
+
+</form>
+</div>
+<div class="grid-item">
+
+<form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <b>stock update</b><br>
+
+    <input type="text" placeholder="product name" name="pname" required/><br>
+    <input type="number" placeholder="noofstocks"  name="itemavail" required/><br>
+    <input type="submit" value="stockupdate" class="submit" name="update"/>
+    <br></form>
+
+
+</div></div>
+<div class="grid-container" style="grid-template-columns:auto auto">
+    <div class="grid-item">
+        <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+            {% csrf_token %}
+            <b>add admin</b><br>
+            <input type="text" placeholder="staffname" name="sname" required/><br>
+             <input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone"  required><br>
+            <input type="number" placeholder="salary" name="salary" required><br>
+            <input type="password" placeholder="password" name="password" required><br>
+            <input type="submit" value="addstaff" class="submit" name="update"/>
+</form>
+<br><b>find staff</b>
+<form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" placeholder="staffname" name="sname" required/>
+    <input type="submit" value="findstaffbyname" class="submit" name="update"/><br>
+
+
+
+</form>
+<form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone"  required>
+    <input type="submit" value="findstaffbynumber" class="submit" name="update"/><br>
+
+
+
+</form>
+</div>
+<div class="grid-item">
+    <form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+        {% csrf_token %}
+<b>staff salary update</b><br>
+<input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone"  required><br>
+<input type="number" placeholder="salary" name="salary" required><br>
+<input type="submit" value="salaryupdate" class="submit" name="update"/><br>
+</form>
+<form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone"  required><br>
+    <input type="submit" value="removestaff" class="submit" name="update"/><br></form><br>
+<form action ={% url 'insert' %} method="POST"  enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="text" placeholder="staffname" name="sname" required/><br>
+             <input type="phonenumber" placeholder="+919783829948" pattern="[7-9]{1}[0-9]{9}" name="phone"  required><br>
+            <input type="number" placeholder="salary" name="salary" required><br>
+            <input type="submit" value="addnewstaff" class="submit" name="update"/></form>
+            </div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+     
+
+
+
+
+        
+
+</div>
+
+
+
+
+
+
+<div class="grid-container" style="grid-template-columns:auto;background-color: antiquewhite;">
+<table  style="width:display;border:1px solid black">
+
+    <tr><th>pname</th>
+    <th>cost</th>
+<th>season</th>
+<th>itemavail</th>
+<th>pmodel</th></tr>
+    {% for i in detail %}
+    <tr>
+        <td>{{i.pname}}</td>
+        <td>{{i.cost}}</td>
+        <td>{{i.season}}</td>
+        <td>{{i.itemavail}}</td>
+        <td>{{i.pmodel}}</td>        
+    </tr>
+    {% endfor %}
+</table></div>
+<div class="grid-container" style="grid-template-columns:auto;background-color:grey">
+<table  style="width:display;border:1px solid black">
+    <tr><th>cname</th>
+        <th>orderno</th>
+    <th>productdetails</th>
+    <th>totalcost</th>
+    <th>status</th>
+<th>date</th>
+<th>orderby</th>
+</tr>
+{% for i in details %}
+<tr>
+<td>{{i.cname}}</td>
+<td>{{i.orderno}}</td>
+<td>{{i.productdetails}}</td>
+<td>{{i.totalcost}}</td>
+<td>{{i.status}}</td>
+<td>{{i.date}}</td>
+<td>{{i.orderby}}</td></tr>
+{% endfor %}
+
+</table>
+</div>
+<div class="grid-container" style="grid-template-columns:auto;background-color:blanchedalmond">
+<table><tr><th>cname</th>
+<th>phonenumber</th>
+<th>orderno</th></tr>
+{% for i in detail1 %}
+<tr>
+    <td>{{i.cname}}</td>
+    <td>{{i.phonenumber}}</td>
+    <td>{{i.orderno}}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+<div class="grid-container" style="grid-template-columns:auto;background-color: antiquewhite;">
+    <table>
+        <tr><th>staffname</th>
+        <th>phonenumber</th>
+    <th>salary</th>
+<th>dateofjoining</th></tr>
+{% for i in sdetail %}
+<tr><td>{{i.sname}}</td>
+<td>{{i.phonenumber}}</td>
+<td>{{i.salary}}</td>
+<td>{{i.dateofjoining}}</td></tr>
+{% endfor %}
+    </table>
+    </div>
+
+</body>
+</html>
